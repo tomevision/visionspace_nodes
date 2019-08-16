@@ -1,0 +1,61 @@
+tosca_definitions_version: cloudify_dsl_1_3
+imports:
+  - 'http://www.getcloudify.org/spec/cloudify/4.3/types.yaml'
+  - 'http://www.getcloudify.org/spec/cloudify/5.0.0/types.yaml'
+node_types:
+  visionspace.nodes.directory:
+    derived_from: cloudify.nodes.Root
+    properties:
+      state:
+        default: directory
+        description: Ansible
+        required: true
+      action:
+        default: ':create'
+        description: ''
+        required: false
+        type: string
+      owner:
+        default: ''
+        description: ''
+        required: true
+        type: string
+      name:
+        default: ''
+        description: ''
+        required: true
+        type: string
+    interfaces: {}
+  visionspace.nodes.file:
+    derived_from: cloudify.nodes.Root
+    properties:
+      ensure:
+        default: present
+        description: puppet
+        required: false
+        type: string
+      state:
+        default: touch
+        description: Ansible
+        required: false
+        type: string
+      action:
+        default: ':create'
+        description: ''
+        required: false
+        type: string
+      name:
+        default: test.py
+        description: ''
+        required: true
+      owner:
+        default: ''
+        description: ''
+        required: true
+        type: string
+      path:
+        default: /home
+        description: ''
+        required: true
+        type: string
+    interfaces: {}
