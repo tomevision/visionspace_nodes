@@ -57,5 +57,5 @@ node_types:
         required: true
         type: string
     interfaces: {}
-  interfaces: []
+  
   relationships: []
